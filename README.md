@@ -1,13 +1,13 @@
-#Interface Project
+# Interface Project
 Form contractual behavior by implementing interfaces.
 
 For this activity you will be creating, extending and implementing interfaces.
 
-#Getting Started  
+# Getting Started  
 
 Open up a new project in IntelliJ.
 
-#Assignment  
+# Assignment  
 
 Imagine that you are coding the base code for a gaming software company. The Java library you create will be used by other developers to use your framework that their games will run on.
 
@@ -23,13 +23,13 @@ Of course you have to test your code. Create a couple classes that extend Soldie
 
 Note that you can use IntelliJ to generate the interface methods in a class that implements an interface.
 
-#Extend an Interface  
+# Extend an Interface  
 
 As the software matures interfaces will probably need to change. One way to add methods to an interface is to extend it. Write an interface that extends one of the existing interfaces and add a method to it. Have the method return a new Bomb class (the Bomb class should have a toString method).
 
 In main create a class that extends Soldier and implements the new interface. Call the method that returns a Bomb and write the console the String return by the toString method.
 
-#Default Methods  
+# Default Methods  
 
 Your company is now working on "Version 3.0" of the game framework. What you really want to do in version 3.0 of your software is add a new method to an existing interface. The problem is that you cannot do this because you would be breaking the code of all the companies that use your software until they implement the new method(s).
 
@@ -41,7 +41,7 @@ Go ahead and override the default method in a class that implements the interfac
 
 You can find more information about default methods in interfaces here if you are having difficulty.
 
-#Extras  
+# Extras  
 
 Create two new interfaces such that each defines the identical method. Create a new class that extends Soldier and implements these interfaces. This is allowed.
 
