@@ -13,6 +13,9 @@ public class Main {
                         marine.punch() + " " +
                         marine.fightStyle() + " " +
                         marine.runStyle() + "\n");
+        // Old Version
+        marine.version();
+        marine.notAllowed();
 
         System.out.println(
                 frenchSoldier.whoAmI() + " " +
@@ -23,6 +26,9 @@ public class Main {
                         frenchSoldier.punch() + " " +
                         frenchSoldier.fightStyle() + " " +
                         frenchSoldier.runStyle() + "\n");
+        // Old Version
+        frenchSoldier.version();
+        frenchSoldier.notAllowed();
 
         ClonedSoldier clonedSoldier = new ClonedSoldier();
         System.out.println(
@@ -33,12 +39,13 @@ public class Main {
 
         // Version 3.0
         clonedSoldier.version();
+        clonedSoldier.notAllowed();
 
 
     }
 }
 
-class ClonedSoldier extends Soldier implements Bomb, WhoAmI {
+class ClonedSoldier extends Soldier implements Bomb, WhoAmI, NOTALLOWED {
 
     @Override
     public String whoAmI() {
@@ -69,6 +76,12 @@ class ClonedSoldier extends Soldier implements Bomb, WhoAmI {
     @Override
     public String runStyle() {
         return "I NEVER RUN";
+    }
+
+    // Not Allowed
+    @Override
+    public void notAllowed() {
+        System.out.println("NOT ALLOWED!!!\n");
     }
 
 }
@@ -102,7 +115,7 @@ abstract class Soldier {
 
 // Soldiers
 
-class Marine extends Soldier implements Fight, Run, Bomb, WhoAmI {
+class Marine extends Soldier implements Fight, Run, Bomb, WhoAmI, NOTALLOWED {
     @Override
     public String whoAmI() {
         return "I'm PROUD MARINE!!!\n";
@@ -133,9 +146,15 @@ class Marine extends Soldier implements Fight, Run, Bomb, WhoAmI {
     public void version() {
         System.out.println("VERSION: 2.9");
     }
+
+    // Not Allowed
+    @Override
+    public void notAllowed() {
+        System.out.println("ALLOWED!!!\n");
+    }
 }
 
-class FrenchSoldier extends Soldier implements Fight, Run, Bomb, WhoAmI {
+class FrenchSoldier extends Soldier implements Fight, Run, Bomb, WhoAmI, NOTALLOWED {
     @Override
     public String whoAmI() {
         return "Am I even a soldier...!?\n";
@@ -166,6 +185,12 @@ class FrenchSoldier extends Soldier implements Fight, Run, Bomb, WhoAmI {
     public void version() {
         System.out.println("VERSION: 2.9");
     }
+
+    // Not Allowed
+    @Override
+    public void notAllowed() {
+        System.out.println("ALLOWED!!!\n");
+    }
 }
 
 // Fight Styles
@@ -178,10 +203,14 @@ interface Run {
     public String runStyle();
 }
 
-// Who Am I
+// Who Am I && Not Allowed
 
-interface WhoAmI{
+interface WhoAmI {
     public String whoAmI();
+}
+
+interface NOTALLOWED {
+    public void notAllowed();
 }
 
 // BOMB
