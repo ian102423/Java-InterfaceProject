@@ -1,3 +1,4 @@
+
 public class Main {
     public static void main(String[] args) {
         Marine marine = new Marine();
@@ -11,7 +12,7 @@ public class Main {
                         marine.speak() + " " +
                         marine.punch() + " " +
                         marine.fightStyle() + " " +
-                        marine.runStyle());
+                        marine.runStyle() + "\n");
 
         System.out.println(
                 frenchSoldier.whoAmI() + " " +
@@ -21,24 +22,27 @@ public class Main {
                         frenchSoldier.speak() + " " +
                         frenchSoldier.punch() + " " +
                         frenchSoldier.fightStyle() + " " +
-                        frenchSoldier.runStyle());
+                        frenchSoldier.runStyle() + "\n");
 
         ClonedSoldier clonedSoldier = new ClonedSoldier();
         System.out.println(
                 clonedSoldier.whoAmI() + " " +
                         clonedSoldier.speak() + " " +
                         clonedSoldier.punch() + " " +
-                        clonedSoldier);
+                        clonedSoldier + "\n");
+
+        // Version 3.0
+        clonedSoldier.version();
 
 
     }
 }
 
-class ClonedSoldier extends Soldier implements Bomb {
+class ClonedSoldier extends Soldier implements Bomb, WhoAmI {
 
     @Override
     public String whoAmI() {
-        return "I am Clonded Soldier, Serial #74";
+        return "I am Clond Soldier, Serial #74\n";
     }
 
     @Override
@@ -66,6 +70,7 @@ class ClonedSoldier extends Soldier implements Bomb {
     public String runStyle() {
         return "I NEVER RUN";
     }
+
 }
 
 abstract class Soldier {
@@ -97,10 +102,10 @@ abstract class Soldier {
 
 // Soldiers
 
-class Marine extends Soldier implements Fight, Run {
+class Marine extends Soldier implements Fight, Run, Bomb, WhoAmI {
     @Override
     public String whoAmI() {
-        return "I'm PROUD MARINE!!!";
+        return "I'm PROUD MARINE!!!\n";
     }
 
     @Override
@@ -122,12 +127,18 @@ class Marine extends Soldier implements Fight, Run {
     public String runStyle() {
         return "BAMF! BAMF! BAMF!";
     }
+
+    // Override Version
+    @Override
+    public void version() {
+        System.out.println("VERSION: 2.9");
+    }
 }
 
-class FrenchSoldier extends Soldier implements Fight, Run {
+class FrenchSoldier extends Soldier implements Fight, Run, Bomb, WhoAmI {
     @Override
     public String whoAmI() {
-        return "Am I even a soldier...!?";
+        return "Am I even a soldier...!?\n";
     }
 
     @Override
@@ -150,7 +161,11 @@ class FrenchSoldier extends Soldier implements Fight, Run {
         return "BATATATATATA";
     }
 
-    ;
+    // Override Version
+    @Override
+    public void version() {
+        System.out.println("VERSION: 2.9");
+    }
 }
 
 // Fight Styles
@@ -163,8 +178,18 @@ interface Run {
     public String runStyle();
 }
 
+// Who Am I
+
+interface WhoAmI{
+    public String whoAmI();
+}
+
 // BOMB
 
 interface Bomb extends Fight, Run {
     public String toString();
+
+    public default void version() {
+        System.out.println("VERSION: 3.0");
+    }
 }
